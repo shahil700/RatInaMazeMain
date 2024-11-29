@@ -1,0 +1,170 @@
+body {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.grid-input {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.grid-input label {
+  margin: 0 5px;
+  font-weight: bold;
+}
+
+.grid-input input {
+  padding: 5px 10px;
+  margin: 0 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 80px;
+}
+
+.grid-input button {
+  padding: 8px 12px;
+  margin-left: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.grid-input button:hover {
+  background-color: #0056b3;
+}
+
+#maze {
+  display: grid;
+  gap: 2px;
+  border: 2px solid black;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow: auto;
+}
+
+.cell {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: 1px solid lightgray;
+  box-sizing: border-box;
+}
+
+.wall {
+  background-color: black;
+}
+
+.rat {
+  background-color: green;
+  border-radius: 50%;
+}
+
+.goal {
+  background-color: red;
+}
+
+button-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover:enabled {
+  background-color: #0056b3;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+#message {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  display: inline-block;
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+#message.victory {
+  background-color: green;
+  opacity: 1;
+  transform: scale(1);
+  animation: pulse 1s infinite;
+}
+
+#message.failed {
+  background-color: red;
+  opacity: 1;
+  transform: scale(1);
+  animation: shake 0.5s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 600px) {
+  .cell {
+    width: 20px;
+    height: 20px;
+  }
+}
